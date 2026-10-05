@@ -12,12 +12,18 @@ Use the architecture document for the component diagram, implementation boundari
 | Component | Responsibility |
 | --- | --- |
 | [`src/cleaning/main.py`](src/cleaning/main.py) | HTTP handlers: `GET /healthz`, `POST /clean` |
+| [`src/cleaning/ops.py`](src/cleaning/ops.py) | HTTP handlers: `GET /readyz`, `POST /workspaces`, `GET /workspaces`, `POST /workspaces/{workspace_id}/jobs`, `GET /jobs/{job_id}` |
 | [`src/cleaning/clean.py`](src/cleaning/clean.py) | Functions: `snake`, `coerce`, `iso_date`, `median`, `quartiles`, `clean` |
 | [`requirements.txt`](requirements.txt) | Implementation or supporting configuration |
 | [`src/cleaning/__init__.py`](src/cleaning/__init__.py) | Implementation or supporting configuration |
+| [`Dockerfile`](Dockerfile) | Container build/service configuration |
+| [`Makefile`](Makefile) | Implementation or supporting configuration |
+| [`docker-compose.yml`](docker-compose.yml) | Container build/service configuration |
 | [`tests/test_clean.py`](tests/test_clean.py) | Executable checks and regression examples |
+| [`tests/test_ops.py`](tests/test_ops.py) | Executable checks and regression examples |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | GitHub Actions job definitions |
 | [`README.md`](README.md) | Project explanations or operating notes |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Project explanations or operating notes |
 
 ### Local setup and verification
 
