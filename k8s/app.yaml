@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-cleaning-tool
+  labels:
+    app: data-cleaning-tool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-cleaning-tool
+  template:
+    metadata:
+      labels:
+        app: data-cleaning-tool
+    spec:
+      containers:
+        - name: api
+          image: data-cleaning-tool:local
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /v1/readyz
+              port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-cleaning-tool
+spec:
+  selector:
+    app: data-cleaning-tool
+  ports:
+    - port: 80
+      targetPort: 8080

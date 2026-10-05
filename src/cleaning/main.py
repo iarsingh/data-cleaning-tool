@@ -1,9 +1,11 @@
+from cleaning.ops import router as ops_router
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 from cleaning.clean import CleaningError, clean
 
 app = FastAPI()
+app.include_router(ops_router, prefix="/v1")
 
 
 class CleanBody(BaseModel):
